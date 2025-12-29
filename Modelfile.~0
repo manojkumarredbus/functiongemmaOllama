@@ -1,0 +1,1 @@
+FROM ./functiongemma-270m-it-simple-tool-calling.gguf ,4-~4,2-~6,2

@@ -1,0 +1,18 @@
+# Ignore virtual environment
+venv/
+
+# Ignore llama.cpp repository
+llama.cpp/
+
+# Ignore model directories and files
+functiongemma-270m-it-simple-tool-calling*/
+*.gguf
+*.safetensors
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore temp files
+*.tmp
+*.log

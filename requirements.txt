@@ -1,0 +1,9 @@
+torch
+transformers
+datasets
+accelerate
+evaluate
+trl
+protobuf
+sentencepiece
+tensorboard
