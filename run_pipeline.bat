@@ -46,7 +46,7 @@ if not exist "llama.cpp" (
 
 :: Ask user for quantization type
 set QUANT_TYPE=q8_0
-set /p QUANT_TYPE="Enter output type (bf16, f16, q8_0) [default: %QUANT_TYPE%]: "
+set /p QUANT_TYPE="Enter output type (f32, f16, bf16, q8_0, tq1_0, tq2_0, auto) [default: %QUANT_TYPE%]: "
 
 echo Using output type: !QUANT_TYPE!
 
