@@ -59,7 +59,8 @@ The magic happens in `run_pipeline.bat`. This script performs the entire workflo
 **What this script does:**
 1.  **Trains** the model using `train.py` (Default: 3 epochs).
 2.  **Tests** the Python model locally with `test_model.py`.
-3.  **Converts** the model to GGUF format using `llama.cpp`.
+3.  **Converts** the model to GGUF format using `llama.cpp`. 
+    *   *New:* Now includes an **interactive prompt** to select your quantization level (`q8_0`, `f16`, `bf16`, `tq1_0`, etc.).
 4.  **Imports** the model into Ollama as `functiongemma-custom:YYYY-MM-DD`.
 
 ### Manual Execution
