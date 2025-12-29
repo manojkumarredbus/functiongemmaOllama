@@ -43,8 +43,14 @@ if not exist "llama.cpp" (
     echo [ERROR] llama.cpp directory not found. Please clone it first.
     exit /b 1
 )
-:: Using bf16 to match the training precision
-python llama.cpp\convert_hf_to_gguf.py %TRAIN_DIR% --outfile %GGUF_FILE% --outtype bf16
+
+:: Ask user for quantization type
+set QUANT_TYPE=q8_0
+set /p QUANT_TYPE="Enter output type (bf16, f16, q8_0) [default: %QUANT_TYPE%]: "
+
+echo Using output type: !QUANT_TYPE!
+
+python llama.cpp\convert_hf_to_gguf.py %TRAIN_DIR% --outfile %GGUF_FILE% --outtype !QUANT_TYPE!
 if %ERRORLEVEL% NEQ 0 goto :Error
 
 :: 5. Ollama Deployment
