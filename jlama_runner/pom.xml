@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.rblab</groupId>
+  <artifactId>functiongemma-runner</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <jlama.version>0.8.1</jlama.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+        <groupId>com.github.tjake</groupId>
+        <artifactId>jlama-core</artifactId>
+        <version>${jlama.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.tjake</groupId>
+        <artifactId>jlama-native</artifactId>
+        <version>${jlama.version}</version>
+        <classifier>windows-x86_64</classifier>
+    </dependency>
+    <dependency>
+        <groupId>com.github.tjake</groupId>
+        <artifactId>jlama-cli</artifactId>
+        <version>${jlama.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.4.14</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <mainClass>com.rblab.RunJlama</mainClass>
+          <arguments>
+             <!-- Argument 0: Model Path passed from command line -->
+          </arguments>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+           <compilerArgs>
+             <arg>--add-modules</arg>
+             <arg>jdk.incubator.vector</arg>
+           </compilerArgs>
+        </configuration>
+      </plugin>
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <argLine>--add-modules jdk.incubator.vector --enable-preview</argLine>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
